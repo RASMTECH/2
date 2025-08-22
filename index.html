@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3079,7 +3079,6 @@ button:hover {
     <label for="resourceCategory">Category:</label>
     <select id="resourceCategory" required>
       <option value="">Select Category</option>
-      <option value="">Select Category</option>
       <option value="math">Math</option>
       <option value="science">Science</option>
       <option value="literature">Literature</option>
@@ -3098,8 +3097,6 @@ button:hover {
       <option value="economics">Economics</option>
       <option value="businessStudies">Business Studies</option>
       <option value="agriculture">Agriculture</option>
-
-      <!-- Newly added subjects and activities -->
       <option value="literacyActivities">Literacy Activities</option>
       <option value="kiswahiliLanguageActivities">Kiswahili Language Activities</option>
       <option value="englishLanguageActivities">English Language Activities</option>
@@ -3108,8 +3105,6 @@ button:hover {
       <option value="hygieneAndNutritionActivities">Hygiene and Nutrition Activities</option>
       <option value="religiousEducationActivities">Religious Education Activities</option>
       <option value="movementAndCreativeActivities">Movement and Creative Activities</option>
-
-      <!-- Additional subjects for higher grades -->
       <option value="brailleLiteracy">Literacy Activities or Braille Literacy Activities</option>
       <option value="socialStudies">Social Studies</option>
       <option value="integratedScience">Integrated Science</option>
@@ -3143,91 +3138,123 @@ button:hover {
       <option value="juniorSecondary">Junior Secondary</option>
       <option value="seniorSecondary">Senior Secondary</option>
     </select>
+
+    <!-- New Term filter -->
+    <label for="resourceTerm">Term:</label>
+    <select id="resourceTerm">
+      <option value="">All Terms</option>
+      <option value="term1">Term 1</option>
+      <option value="term2">Term 2</option>
+      <option value="term3">Term 3</option>
+    </select>
+
+    <!-- New Strand filter -->
+    <label for="resourceStrand">Strand:</label>
+    <input type="text" id="resourceStrand" placeholder="Search by Strand">
   </div>
 </div>
-  <!-- Admin only view -->
-  <div id="adminUploadForm" style="display:none;">
-    <div class="form-container">
-      <img src="https://i.imgur.com/x9v3Czl.jpeg" alt="Left Side" class="side-image" />
 
-      <form id="resourceForm">
-        <label for="resourceTitle">Title:</label>
-        <input type="text" id="resourceTitle" required />
+<!-- Admin only view -->
+<div id="adminUploadForm" style="display:none;">
+  <div class="form-container">
+    <img src="https://i.imgur.com/x9v3Czl.jpeg" alt="Left Side" class="side-image" />
 
-        <label for="resourcePrice">Price (Ksh):</label>
-        <input type="number" id="resourcePrice" required />
+    <form id="resourceForm" style="
+      background-image: url('https://i.imgur.com/your-background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 25px;
+      border-radius: 12px;
+      color: #fff;
+    ">
+      <label for="resourceTitle">Title:</label>
+      <input type="text" id="resourceTitle" required />
 
-        <label for="resourceCategory">Category:</label>
-        <select id="resourceCategory" required>
-          <option value="">Select Category</option>
-          <option value="math">Math</option>
-          <option value="science">Science</option>
-          <option value="literature">Literature</option>
-          <option value="history">History</option>
-          <option value="geography">Geography</option>
-          <option value="biology">Biology</option>
-          <option value="chemistry">Chemistry</option>
-          <option value="physics">Physics</option>
-          <option value="english">English</option>
-          <option value="french">French</option>
-          <option value="art">Art</option>
-          <option value="music">Music</option>
-          <option value="computerScience">Computer Science</option>
-          <option value="physicalEducation">Physical Education</option>
-          <option value="religiousStudies">Religious Studies</option>
-          <option value="economics">Economics</option>
-          <option value="businessStudies">Business Studies</option>
-          <option value="agriculture">Agriculture</option>
-          <!-- Newly added subjects and activities -->
-          <option value="literacyActivities">Literacy Activities</option>
-          <option value="kiswahiliLanguageActivities">Kiswahili Language Activities</option>
-          <option value="englishLanguageActivities">English Language Activities</option>
-          <option value="mathematicalActivities">Mathematical Activities</option>
-          <option value="environmentalActivities">Environmental Activities</option>
-          <option value="hygieneAndNutritionActivities">Hygiene and Nutrition Activities</option>
-          <option value="religiousEducationActivities">Religious Education Activities</option>
-          <option value="movementAndCreativeActivities">Movement and Creative Activities</option>
-          <!-- Additional subjects for higher grades -->
-          <option value="brailleLiteracy">Braille Literacy</option>
-          <option value="socialStudies">Social Studies</option>
-          <option value="integratedScience">Integrated Science</option>
-          <option value="preTechnicalStudies">Pre Technical Studies</option>
-        </select>
+      <label for="resourcePrice">Price (Ksh):</label>
+      <input type="number" id="resourcePrice" required />
 
-        <label for="resourceGrade">Grade:</label>
-        <select id="resourceGrade" required>
-          <option value="">Select Grade</option>
-          <option value="grade1">Grade 1</option>
-          <option value="grade2">Grade 2</option>
-          <option value="grade3">Grade 3</option>
-          <option value="grade4">Grade 4</option>
-          <option value="grade5">Grade 5</option>
-          <option value="grade6">Grade 6</option>
-          <option value="grade7">Grade 7</option>
-          <option value="grade8">Grade 8</option>
-          <option value="grade9">Grade 9</option>
-          <option value="grade10">Grade 10</option>
-          <option value="grade11">Grade 11</option>
-          <option value="grade12">Grade 12</option>
-        </select>
+      <label for="resourceCategory">Category:</label>
+      <select id="resourceCategory" required>
+        <option value="">Select Category</option>
+        <option value="math">Math</option>
+        <option value="science">Science</option>
+        <option value="literature">Literature</option>
+        <option value="history">History</option>
+        <option value="geography">Geography</option>
+        <option value="biology">Biology</option>
+        <option value="chemistry">Chemistry</option>
+        <option value="physics">Physics</option>
+        <option value="english">English</option>
+        <option value="french">French</option>
+        <option value="art">Art</option>
+        <option value="music">Music</option>
+        <option value="computerScience">Computer Science</option>
+        <option value="physicalEducation">Physical Education</option>
+        <option value="religiousStudies">Religious Studies</option>
+        <option value="economics">Economics</option>
+        <option value="businessStudies">Business Studies</option>
+        <option value="agriculture">Agriculture</option>
+        <option value="literacyActivities">Literacy Activities</option>
+        <option value="kiswahiliLanguageActivities">Kiswahili Language Activities</option>
+        <option value="englishLanguageActivities">English Language Activities</option>
+        <option value="mathematicalActivities">Mathematical Activities</option>
+        <option value="environmentalActivities">Environmental Activities</option>
+        <option value="hygieneAndNutritionActivities">Hygiene and Nutrition Activities</option>
+        <option value="religiousEducationActivities">Religious Education Activities</option>
+        <option value="movementAndCreativeActivities">Movement and Creative Activities</option>
+        <option value="brailleLiteracy">Braille Literacy</option>
+        <option value="socialStudies">Social Studies</option>
+        <option value="integratedScience">Integrated Science</option>
+        <option value="preTechnicalStudies">Pre Technical Studies</option>
+      </select>
 
-        <label for="resourceLevel">Level:</label>
-        <select id="resourceLevel" required>
-          <option value="">Select Level</option>
-          <option value="primary">Primary School</option>
-          <option value="juniorSecondary">Junior Secondary</option>
-          <option value="seniorSecondary">Senior Secondary</option>
-        </select>
+      <label for="resourceGrade">Grade:</label>
+      <select id="resourceGrade" required>
+        <option value="">Select Grade</option>
+        <option value="grade1">Grade 1</option>
+        <option value="grade2">Grade 2</option>
+        <option value="grade3">Grade 3</option>
+        <option value="grade4">Grade 4</option>
+        <option value="grade5">Grade 5</option>
+        <option value="grade6">Grade 6</option>
+        <option value="grade7">Grade 7</option>
+        <option value="grade8">Grade 8</option>
+        <option value="grade9">Grade 9</option>
+        <option value="grade10">Grade 10</option>
+        <option value="grade11">Grade 11</option>
+        <option value="grade12">Grade 12</option>
+      </select>
 
-        <!-- ✅ File Upload made optional -->
-        <label for="resourceFile">Upload File (optional):</label>
-        <input type="file" id="resourceFile" accept=".pdf,.doc,.docx,.ppt,.pptx" />
+      <label for="resourceLevel">Level:</label>
+      <select id="resourceLevel" required>
+        <option value="">Select Level</option>
+        <option value="primary">Primary School</option>
+        <option value="juniorSecondary">Junior Secondary</option>
+        <option value="seniorSecondary">Senior Secondary</option>
+      </select>
 
-        <button type="submit">
-          <i class="fas fa-upload"></i> Upload Resource
-        </button>
-      </form>
+      <!-- New Term dropdown -->
+      <label for="resourceTerm">Term:</label>
+      <select id="resourceTerm" required>
+        <option value="">Select Term</option>
+        <option value="term1">Term 1</option>
+        <option value="term2">Term 2</option>
+        <option value="term3">Term 3</option>
+      </select>
 
+      <!-- New Strand input -->
+      <label for="resourceStrand">Strand:</label>
+      <input type="text" id="resourceStrand" placeholder="Enter Strand" required />
+
+      <!-- File Upload -->
+      <label for="resourceFile">Upload File (optional):</label>
+      <input type="file" id="resourceFile" accept=".pdf,.doc,.docx,.ppt,.pptx" />
+
+      <button type="submit">
+        <i class="fas fa-upload"></i> Upload Resource
+      </button>
+    </form>
 
     <img src="https://i.imgur.com/ytrul2r.jpeg" alt="Right Side" class="side-image" />
   </div>
@@ -3236,6 +3263,8 @@ button:hover {
 <h3>
   <i class="fas fa-book-open" style="color:#3f51b5; margin-right: 8px;"></i>
   Available Resources
+</h3>
+
 <table id="resourcesTable">
   <thead>
     <tr>
@@ -3244,6 +3273,8 @@ button:hover {
       <th>Category</th>
       <th>Grade</th>
       <th>Level</th>
+      <th>Term</th>       <!-- New column -->
+      <th>Strand</th>     <!-- New column -->
       <th>Download</th>
       <th>Action</th>
     </tr>
@@ -3251,9 +3282,7 @@ button:hover {
   <tbody></tbody>
 </table>
 
-
 </div>
-
 
 
 <div id="soulmates" class="page" style="display:none;">
@@ -3791,10 +3820,15 @@ Register To Connect With  Available Soulmates
  <img src="https://i.imgur.com/nYPCM6a.jpeg " class="side-image" />
  <img src="https://i.imgur.com/uyloDlg.jpeg " class="side-image" />
  <img src="https://i.imgur.com/CLnRHF4.jpeg" class="side-image" />
-
-  <form id="marketForm">
-
-
+<form id="marketForm" style="
+    background-image: url('https://i.imgur.com/Mm2b91e.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+">
    <label for="itemName">Item Name</label>
     <input type="text" id="itemName" placeholder="Item Name" required>
 
@@ -3901,7 +3935,6 @@ Register To Connect With  Available Soulmates
   <option value="Other">🌟 Other</option>
 </optgroup>
 
-
     </select>
 
     <label for="itemDescription">Item Description</label>
@@ -3935,7 +3968,8 @@ Register To Connect With  Available Soulmates
     <button type="submit">
       <i class="fas fa-upload"></i> Post Item
     </button>
-  </form>
+</form>
+
 
  <img src="https://i.imgur.com/vwwqSJU.jpeg " class="side-image" />
  <img src="https://i.imgur.com/s4w8sJa.jpeg " class="side-image" />
@@ -4365,9 +4399,11 @@ document.getElementById("resourceForm").addEventListener("submit", async e => {
   const category = document.getElementById("resourceCategory").value;
   const grade = document.getElementById("resourceGrade").value;
   const level = document.getElementById("resourceLevel").value;
+  const term = document.getElementById("resourceTerm").value;
+  const strand = document.getElementById("resourceStrand").value.trim();
 
-  if (!title || !price || !category || !grade || !level) {
-    showCustomAlert("All fields except file are required.", "error");
+  if (!title || !price || !category || !grade || !level || !term) {
+    showCustomAlert("All fields except file and strand are required.", "error");
     document.getElementById("loadingSpinner").style.display = "none";
     return;
   }
@@ -4388,6 +4424,8 @@ document.getElementById("resourceForm").addEventListener("submit", async e => {
       category,
       grade,
       level,
+      term,
+      strand,
       downloadURL,
       filePath,
       uploadedBy: currentUser.uid,
@@ -4409,6 +4447,8 @@ document.getElementById("resourceForm").addEventListener("submit", async e => {
 const categoryFilter = document.getElementById("resourceCategory");
 const gradeFilter = document.getElementById("resourceGrade");
 const levelFilter = document.getElementById("resourceLevel");
+const termFilter = document.getElementById("resourceTerm");
+const strandFilter = document.getElementById("resourceStrand");
 const searchFilter = document.getElementById("searchResources");
 
 let allResources = []; // Store all resources for filtering
@@ -4422,19 +4462,17 @@ async function loadResources() {
     const snapshot = await resourceRef.orderBy("timestamp", "desc").get();
 
     if (snapshot.empty) {
-      tbody.innerHTML = `<tr><td colspan="7">No resources available.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="9">No resources available.</td></tr>`;
       allResources = [];
       return;
     }
 
-    // Save all resources in memory
     allResources = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
     }));
 
     applyFilters(); // Show filtered resources
-
   } catch (err) {
     showCustomAlert("❌ Error loading resources: " + err.message, "error");
   }
@@ -4448,18 +4486,22 @@ function applyFilters() {
   const categoryVal = categoryFilter.value;
   const gradeVal = gradeFilter.value;
   const levelVal = levelFilter.value;
+  const termVal = termFilter.value;
+  const strandVal = strandFilter.value.toLowerCase();
   const searchVal = searchFilter.value.toLowerCase();
 
   const filtered = allResources.filter(r => {
     const matchesCategory = !categoryVal || r.category === categoryVal;
     const matchesGrade = !gradeVal || r.grade === gradeVal;
     const matchesLevel = !levelVal || r.level === levelVal;
+    const matchesTerm = !termVal || r.term === termVal;
+    const matchesStrand = !strandVal || (r.strand && r.strand.toLowerCase().includes(strandVal));
     const matchesSearch = !searchVal || (r.title && r.title.toLowerCase().includes(searchVal));
-    return matchesCategory && matchesGrade && matchesLevel && matchesSearch;
+    return matchesCategory && matchesGrade && matchesLevel && matchesTerm && matchesStrand && matchesSearch;
   });
 
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7">No resources match your filters.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="9">No resources match your filters.</td></tr>`;
     return;
   }
 
@@ -4488,6 +4530,8 @@ function applyFilters() {
       <td>${r.category}</td>
       <td>${r.grade}</td>
       <td>${r.level}</td>
+      <td>${r.term || "-"}</td>
+      <td>${r.strand || "-"}</td>
       <td>${downloadContent}</td>
       <td>${deleteBtn}</td>
     `;
@@ -4504,7 +4548,7 @@ function applyFilters() {
 }
 
 // ==================== Filter Event Listeners ====================
-[categoryFilter, gradeFilter, levelFilter, searchFilter].forEach(el => {
+[categoryFilter, gradeFilter, levelFilter, termFilter, strandFilter, searchFilter].forEach(el => {
   el.addEventListener("input", applyFilters);
 });
 
