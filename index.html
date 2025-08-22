@@ -7235,14 +7235,50 @@ async function loadSoulmates(reset = true) {
       </div>
     `;
 
-    const blurredContactHTML = `
-      <div style="display:flex; flex-direction:column; gap:8px; margin-top:6px;">
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 12px; border-radius:8px; background:#f0f0f0; border:1px solid #ccc; font-weight:bold; color:#999; font-size:14px; filter: blur(4px);">📞 0700000000</div>
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 12px; border-radius:8px; background:#f0f0f0; border:1px solid #ccc; font-weight:bold; color:#999; font-size:14px; filter: blur(4px);">💬 WhatsApp</div>
-        <div style="color:crimson; font-size:13px; margin-top:4px;">🔒 Pay Ksh 200 to Unlock</div>
-        <button onclick="handleSoulmateAction('${id}', 'unlock')" style="margin-top:4px;background:crimson;color:white;border:none;padding:6px 14px;border-radius:6px;font-weight:bold;cursor:pointer;">💳 Pay</button>
-      </div>
-    `;
+   const blurredContactHTML = `
+  <div style="display:flex; flex-direction:column; gap:8px; margin-top:6px;">
+    <!-- Phone (Blurred) -->
+    <div style="
+      display:flex; align-items:center; justify-content:space-between;
+      padding:8px 12px; border-radius:8px; background:#f0f0f0; border:1px solid #ccc;
+      font-weight:bold; color:#999; font-size:14px; filter: blur(4px);
+    ">
+      📞 0700000000
+    </div>
+
+    <!-- WhatsApp (Blurred) -->
+    <div style="
+      display:flex; align-items:center; justify-content:space-between;
+      padding:8px 12px; border-radius:8px; background:#f0f0f0; border:1px solid #ccc;
+      font-weight:bold; color:#999; font-size:14px; filter: blur(4px);
+    ">
+      💬 WhatsApp
+    </div>
+
+    <!-- Payment Notice -->
+    <div style="color:crimson; font-size:13px; margin-top:4px;">🔒 Pay Ksh 200 to Unlock</div>
+
+    <!-- Pay Button -->
+    <button onclick="handleSoulmateAction('${id}', 'unlock')" 
+      style="
+        margin-top:4px;
+        background:crimson;
+        color:white;
+        border:none;
+        padding:6px 14px;
+        border-radius:6px;
+        font-weight:bold;
+        cursor:pointer;
+        transition: background 0.3s;
+      "
+      onmouseover="this.style.background='#b71c1c';"
+      onmouseout="this.style.background='crimson';"
+    >
+      💳 Pay
+    </button>
+  </div>
+`;
+
 
     const profileContent = d.isClosed ? `
       <p style="color:#999;">Profile Locked</p>
@@ -7255,10 +7291,66 @@ async function loadSoulmates(reset = true) {
       <p style="margin:0;color:#ff5722;"><strong>Age:</strong> ${d.age}</p>
       <p style="margin:0;color:#795548;"><strong>Status:</strong> ${d.status || '—'} ${d.status === "Single" ? "💔" : d.status === "Married" ? "💍" : ""}</p>
       <p style="margin:0;color:#607d8b;"><strong>Occupation:</strong> ${d.occupation}</p>
-      <div style="margin-top:6px;">${hasPaid || isPoster || isAdminUser ? contactHTML : blurredContactHTML}</div>
+      <div style="margin-top:6px;">
+        ${hasPaid || isPoster || isAdminUser ? contactHTML : blurredContactHTML}
+      </div>`;
+
+     // Admin and Poster buttons with toggle functionality
+    const adminButtons = (isAdminUser || isPoster) ? `
+      <button onclick="toggleAdminButtons('${id}')"
+        style="background:#007BFF;color:white;border:none;padding:6px 14px;border-radius:8px;cursor:pointer;margin-top:10px;">
+        🔽 More details 
+      </button>
+      <div id="admin-buttons-${id}" style="margin-top:10px; display:none; flex-wrap:wrap; gap:10px;">
+        <button onclick="deleteSoulmate('${id}')"
+          style="background:#dc3545; color:white; border:none; padding:6px 14px; border-radius:8px; cursor:pointer;">
+          🗑️ Delete
+        </button>
+        <button onclick="handleSoulmateAction('${id}', 'boost')"
+          style="background:#ff9800; color:white; border:none; padding:6px 14px; border-radius:8px; cursor:pointer;">
+          🚀 Boost
+        </button>
+        <button onclick="toggleSoulmateStatus('${id}', ${d.isClosed})"
+          style="background:${d.isClosed ? '#28a745' : '#6c757d'}; color:white; border:none; padding:6px 14px; border-radius:8px; cursor:pointer;">
+          ${d.isClosed ? '♻️ Reopen' : '🚫 Mark as Closed'}
+        </button>
+        ${isAdminUser ? `
+          <button onclick="adminVerifyItem('soulmate', '${id}')"
+            style="background:#007BFF;color:white;border:none;padding:6px 10px;border-radius:8px;font-size:13px;cursor:pointer;">
+            🛡️ Admin Verify (Free)
+          </button>
+          <button onclick="adminBoostItem('soulmate', '${id}')"
+            style="background:#FF5722;color:white;border:none;padding:6px 10px;border-radius:8px;font-size:13px;cursor:pointer;">
+            🚀 Admin Boost (Free)
+          </button>` : `
+          <button onclick="showPaymentModalFor('soulmateVerification', 200, '${id}', '${d.name || ''}')"
+            style="background:#4CAF50;color:white;border:none;padding:6px 10px;border-radius:8px;font-size:13px;cursor:pointer;">
+            ✅ Verify Now – Ksh 200
+          </button>`}
+      </div>
+    ` : "";
+
+    const likeButtonHTML = `
+      <button id="likeBtn-${id}" onclick="toggleLike('${id}')"
+        style="background:#e91e63; color:white; border:none; padding:5px 12px; border-radius:50px; cursor:pointer;">
+        🤍 Like
+      </button>
+      <span id="likeCount-${id}" style="font-weight:bold; margin-left:10px;">
+        ${totalLikes} Likes
+      </span>
     `;
 
-    card.innerHTML = `${profileImageHTML}${d.verified ? `<div class="verified-badge">✔ Verified</div>` : ""}${profileContent}`;
+    card.innerHTML = `
+      ${profileImageHTML}
+      ${d.verified ? `<div class="verified-badge" style="position: absolute; top: 8px; right: 8px; background-color: #1DA1F2; color: white; border-radius: 25px; padding: 4px 10px; display: flex; align-items: center; font-size: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out; cursor: pointer;">
+          <i class="fas fa-check" style="transform: scale(1.2); margin-right: 5px;"></i>
+          Verified
+      </div>` : ""}
+      ${profileContent}
+      ${likeButtonHTML}
+      ${adminButtons}
+    `;
+
     container.appendChild(card);
     updateLikeUI(id);
     listenForLikeChanges(id);
@@ -7275,7 +7367,6 @@ window.addEventListener('scroll', () => {
     }
   }
 });
-
 
 
 async function toggleProfileLock(profileId, isLocked) {
